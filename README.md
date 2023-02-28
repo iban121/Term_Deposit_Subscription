@@ -14,6 +14,6 @@ Customer profile includes information on the customers' ages, employment sector,
 ## Data Wrangling
 
 Many of the data entry were made in inconvenient forms. For example, discrete numerical data such as the month of contact were entered as strings, so the first course of action was the ammendment of the data types. The dataset is labelled with no missing entries for any of the clients. However, the distribution of the two classes was highly imbalanced: 92.76% of the dataset represented customers who did not sign up for term deposits whilst only 7.24% were customers who did subscribe. 
-
-![Screenshot] (<img width="380" alt="image" src="https://user-images.githubusercontent.com/92346673/221760099-3ad02c92-c756-40e0-b918-6ef8c466e705.png">
-)
+<p align = "center">
+<img width="380" alt=image" src="https://user-images.githubusercontent.com/92346673/221760099-3ad02c92-c756-40e0-b918-6ef8c466e705.png">
+</p>
