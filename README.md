@@ -17,3 +17,9 @@ Many of the data entry were made in inconvenient forms. For example, discrete nu
 <p align = "center">
 <img width="380" alt=image" src="https://user-images.githubusercontent.com/92346673/221760099-3ad02c92-c756-40e0-b918-6ef8c466e705.png">
 </p>
+<br />
+Prior to deciding on how to handle the imbalnace, first anomalous and spurious data had to be identified and addressed. In order to identify possible key features from each attribute, the data wrangling steps were broken down for each feature, and for each feature the normalised distribution of the subscriptions were also explored.
+                                                                                                                                       
+                                                                                                                                   
+
+                                                                                                                                       
