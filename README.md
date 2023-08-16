@@ -48,15 +48,40 @@ LabelEncoder was used to encode the categorical features: job, marital, educatio
 
 ## ML Models
 
-Initially, the following series of models were developed and optimised using GridSearchCV for unscaled data, then the scaled dataset was used or data with stratified sampling:
-1. K Nearest Neighbors Classifier 
-2. Random Forest Classifier 
-3. AdaBoosting
-4. CatBoost
-5. HistGradBoost
-6. LightGBM
+Initially, the following series of models were developed and optimised by hyperparameter turning through GridSearchCV for unscaled data, then the scaled dataset was used or data with stratified sampling. Each of the models was tested for overfitting and underfitting by comparing the accuracy score with the training set score. Due to the imblanace in the data, the weighted F1 score was used to judge the quality of the model. The area under the ROC was calculated to help determine the best model, and when possible the feature importance was extracted.
 
+1. K Nearest Neighbors Classifier: Weighted F1 score: 0.917, AUC: 0.755
+2. Random Forest Classifier: Weighted F1 score: 0.928, AUC: 0.940, Feature Importance (greater than 10%): duration, balance, day, and age.
+3. AdaBoosting: Weighted F1 Score of 0.919, AUC: 0.701, Feature Importance (greater than 10%): duration, balance, and day.
+4. CatBoost: Weighted F1 Score of 0.933, AUC: 0.947, Feature Importance (greater than 10%): duration, month, and contact.
+5. HistGradBoost: Weighted F1 Score of 0.932, AUC: 0.948
+6. LightGBM: Weighted F1 Score of 0.934, AUC: 0.948, Feature Importance: duration, balance, day, month
 
+These were then compared to models generated with a SMOTE dataset. 
 
+1. K Nearest Neighbors Classifier: Weighted F1 score: 0.851, AUC: 0.762
+2. Random Forest Classifier: Weighted F1 score: 0.928, AUC: 0.929, Feature Importance (greater than 10%): month, duration
+3. AdaBoosting: Weighted F1 Score of 0.907, AUC: 0.733, Feature Importance (greater than 10%): duration and month.
+4. CatBoost: Weighted F1 Score of 0.933, AUC: 0.930, Feature Importance (top three): month, duration, and contact.
+5. LightGBM: Weighted F1 Score of 0.918, AUC: 0.932, Feature Importance: duration, month, balance, and day.
+
+## Best Model
+
+Random Forest Classifier
+
+Parameters: 'criterion': 'gini', 'max_depth': 9, 'n_estimators': 27
+Dataset: SMOTE analysis
+Weighted F1 Score: 0.923
+AUC of ROC: 0.919
+Key Features: duration, contact, month
+
+## Customer Segmentation
+
+The aim was to perform KMeans Clustering with PCA to see if the segments identified (duration, contact and month) could be further confirmed. Silhouette Analysis and the Elbow Method were used to identify optimal values of KK for the K Means clustering. 
+
+## Conclusion
+The best-performing model here is a Random Forest Classifier which yield an accuracy score of 92% after SMOTE analysis was conducted to account for the imbalance in the dataset. It is important to note that whilst the success metrics outlined in the aim of the project are accuracy, the weighted f1 score was prioritised due to the imbalance in the dataset. For this model, the weighted f1 score is 92% as well. 
+
+The Random Forest Classifier, alongside other classification algorithms, highlighted the month of the last contact, the duration of the last contact, the means of the last contact, and the balance as important features in the dataset for the classification. This was in line with the results of KMeans clustering with PCA. 3 to 4 clusters look visible. To gain a better idea of the problem, it's worth looking into how many clients signed up for subscriptions and then tried to withdraw their deposits before the maturity time. This alongside the duration of the contacts can help gain a better understanding of the relationship duration and subscription. Otherwise, it does look like the longer a customer is spoken with the higher the chance of them subscribing for term deposits. October and March have the highest subscription rates and therefore is worth driving more attention to these two months through telephone/cellphone contact. 
 
 
